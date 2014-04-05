@@ -1,3 +1,11 @@
+# =============== #
+# Unity generated #
+# =============== #
+Unity/Temp/
+Unity/Obj/
+Unity/UnityGenerated/
+Unity/Library/
+
 #################
 ## Eclipse
 #################
