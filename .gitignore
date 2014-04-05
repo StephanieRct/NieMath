@@ -5,6 +5,11 @@ Unity/Temp/
 Unity/Obj/
 Unity/UnityGenerated/
 Unity/Library/
+Unity/Assets/Nie/
+# ============= #
+# Visual Studio #
+# ============= #
+VS/Nie/
 
 #################
 ## Eclipse
