@@ -21,7 +21,7 @@ namespace Nie.Math
         public override bool Equals(object other) { return mBase.Equals(other); }
         public override int GetHashCode() { return mBase.GetHashCode(); }
 
-        public Vector2DN normalized { get { return new Vector2DN( new Vector2D(mBase.normalized) ); } }
+        public Vector2DN normalized { get { return (Vector2DN)( new Vector2D(mBase.normalized) ); } }
         public float length { get { return mBase.magnitude; } set { mBase = mBase * (value / mBase.magnitude); } }
         public float sqrLength { get { return mBase.sqrMagnitude; } }
 
@@ -49,16 +49,18 @@ namespace Nie.Math
 
         public override int GetHashCode() { return mX.GetHashCode() ^ mY.GetHashCode(); }
 
-        public Vector2DN normalized { get { return new Vector2DN(this / length); } }
+        public Vector2DN normalized { get { return (Vector2DN)(this / length); } }
         public float length { get { return Op.Sqrt(sqrLength); } set { float r = value / Op.Sqrt(sqrLength); mX *= r; mY *= r; } }
         public float sqrLength { get { return mX * mX + mY * mY; } }
         public float Dot(Vector2D o) { return mX * o.mX + mY * o.mY; }
 #endif
+        public Vector2D xx { get { return new Vector2D(x, x); } }
+        public Vector2D yy { get { return new Vector2D(y, y); } }
         public override string ToString()
         {
             return "(" + x + ", " + y + ")";
         }
-        public bool IsNormal() { return System.Math.Abs(sqrLength - 1) < 0.001f; }
+        public bool IsNormal() { return Op.IsZeroNear(sqrLength - 1); }
 
         public float Cross(Vector2D a) { return (x * a.y) - (y * a.x); }
 
@@ -79,6 +81,8 @@ namespace Nie.Math
         public static Vector2D operator /(Vector2D a, float b) { return new Vector2D(a.x / b, a.y / b); }
         public static Vector2D operator *(float a, Vector2D b) { return new Vector2D(a * b.x, a * b.y); }
         public static Vector2D operator /(float a, Vector2D b) { return new Vector2D(a / b.x, a / b.y); }
+
+        public static Vector2D operator -(Vector2D a) { return new Vector2D(-a.x, -a.y); }
         #endregion
 
         #region Angle

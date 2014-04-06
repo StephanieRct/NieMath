@@ -49,13 +49,17 @@
      <Compile Include="Assets\Nie\Math\AngleCos.cs" />
      <Compile Include="Assets\Nie\Math\AngleRadian.cs" />
      <Compile Include="Assets\Nie\Math\Bool2.cs" />
+     <Compile Include="Assets\Nie\Math\Bool3.cs" />
      <Compile Include="Assets\Nie\Math\CircularDirection.cs" />
      <Compile Include="Assets\Nie\Math\Debug.cs" />
      <Compile Include="Assets\Nie\Math\IVector2D.cs" />
+     <Compile Include="Assets\Nie\Math\IVector3D.cs" />
      <Compile Include="Assets\Nie\Math\Op.cs" />
      <Compile Include="Assets\Nie\Math\Scalar.cs" />
      <Compile Include="Assets\Nie\Math\Vector2D.cs" />
      <Compile Include="Assets\Nie\Math\Vector2DN.cs" />
+     <Compile Include="Assets\Nie\Math\Vector3D.cs" />
+     <Compile Include="Assets\Nie\Math\Vector3DN.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -19,8 +19,7 @@ namespace Nie.Math
         }
         public static bool IsNear(float a, float b)
         {
-            float ratio = a / b;
-            float diff = Op.Abs(ratio - Scalar.one);
+            float diff = Op.Abs(a - b);
             return diff <= 0.001f;
         }
     }

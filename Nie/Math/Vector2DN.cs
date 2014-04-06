@@ -12,6 +12,13 @@ namespace Nie.Math
         {
             return a.mBase;
         }
+        public static explicit operator Vector2DN(Vector2D a)
+        {
+            Debug.Assert(a.IsNormal());
+            Vector2DN v;
+            v.mBase = a;
+            return v;
+        }
         #endregion
 
         #region IVector2D
@@ -21,7 +28,6 @@ namespace Nie.Math
 
         #region Constructor
         public Vector2DN(float x, float y) { mBase = new Vector2D(x, y); Debug.Assert(mBase.IsNormal()); }
-        public Vector2DN(Vector2D a) { mBase = a; Debug.Assert(mBase.IsNormal()); }
         #endregion
 
         #region Object
@@ -42,6 +48,26 @@ namespace Nie.Math
         public float Cross(Vector2D a) { return mBase.Cross(a); }
 
 
+
+        #region Operator
+        public static Bool2 operator <(Vector2DN a, Vector2DN b) { return new Bool2(a.x < b.x, a.y < b.y); }
+        public static Bool2 operator >(Vector2DN a, Vector2DN b) { return new Bool2(a.x > b.x, a.y > b.y); }
+        public static Bool2 operator <=(Vector2DN a, Vector2DN b) { return new Bool2(a.x <= b.x, a.y <= b.y); }
+        public static Bool2 operator >=(Vector2DN a, Vector2DN b) { return new Bool2(a.x >= b.x, a.y >= b.y); }
+        public static Bool2 operator !=(Vector2DN a, Vector2DN b) { return new Bool2(a.x != b.x, a.y != b.y); }
+        public static Bool2 operator ==(Vector2DN a, Vector2DN b) { return new Bool2(a.x == b.x, a.y == b.y); }
+
+        public static Vector2D operator +(Vector2DN a, Vector2DN b) { return new Vector2D(a.x + b.x, a.y + b.y); }
+        public static Vector2D operator -(Vector2DN a, Vector2DN b) { return new Vector2D(a.x - b.x, a.y - b.y); }
+        public static Vector2D operator *(Vector2DN a, Vector2DN b) { return new Vector2D(a.x * b.x, a.y * b.y); }
+        public static Vector2D operator /(Vector2DN a, Vector2DN b) { return new Vector2D(a.x / b.x, a.y / b.y); }
+        public static Vector2D operator *(Vector2DN a, float b) { return new Vector2D(a.x * b, a.y * b); }
+        public static Vector2D operator /(Vector2DN a, float b) { return new Vector2D(a.x / b, a.y / b); }
+        public static Vector2D operator *(float a, Vector2DN b) { return new Vector2D(a * b.x, a * b.y); }
+        public static Vector2D operator /(float a, Vector2DN b) { return new Vector2D(a / b.x, a / b.y); }
+
+        public static Vector2DN operator -(Vector2DN a) { return new Vector2DN(-a.x, -a.y); }
+        #endregion
 
         #region Angle
         public Vector2DN perpendicularCW { get { return new Vector2DN(y, -x); } }

@@ -23,6 +23,9 @@ class Program
         float angle = v45.AngleBetween(v90).radian;
         Console.WriteLine("AngleBetween v45 and v90=" + angle + " radian");
 
+        Bool2 b0 = v45 < v90;
+        Bool2 b1 = v45 < v11;
+
         Console.ReadLine();
     }
 }
