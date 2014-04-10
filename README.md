@@ -2,7 +2,7 @@
 Nie.Math is a mathematics library for game development. Scalar are assumed to be float values. 
 
 It is free for indie developers (personal or company that does not exceed 30 employees).
-For non-indie use, contact Stéphanie Rancourt at contact@stephanierct.com.
+For non-indie use, contact Stï¿½phanie Rancourt at contact@stephanierct.com.
 
 
 ==Installation==
