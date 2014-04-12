@@ -5,5 +5,5 @@ It is free for indie developers (personal or company that does not exceed 30 emp
 For non-indie use, contact Stephanie Rancourt at contact@stephanierct.com.
 
 
-# Installation
+# Setup
 Run "setupBranch.bat" to setup the VS and Unity assets link to the Nie.Math library.
