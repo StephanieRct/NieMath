@@ -4,7 +4,7 @@
 
 namespace Nie.Math
 {
-    public struct Vector2D : IVector2D<float>
+    public struct Vector2D : IVector2D<float>, IConstVector2D<float>
     {
 #if NIEMATH_UNITY
         public UnityEngine.Vector2 mBase;
@@ -51,9 +51,11 @@ namespace Nie.Math
 
         public Vector2DN normalized { get { return (Vector2DN)(this / length); } }
         public float length { get { return Op.Sqrt(sqrLength); } set { float r = value / Op.Sqrt(sqrLength); mX *= r; mY *= r; } }
-        public float sqrLength { get { return mX * mX + mY * mY; } }
+        public float sqrLength { get { return Dot(this); } }
         public float Dot(Vector2D o) { return mX * o.mX + mY * o.mY; }
 #endif
+
+
         public Vector2D xx { get { return new Vector2D(x, x); } }
         public Vector2D yy { get { return new Vector2D(y, y); } }
         public override string ToString()
@@ -83,6 +85,14 @@ namespace Nie.Math
         public static Vector2D operator /(float a, Vector2D b) { return new Vector2D(a / b.x, a / b.y); }
 
         public static Vector2D operator -(Vector2D a) { return new Vector2D(-a.x, -a.y); }
+
+        public Vector2D Min(Vector2D a){ return (this < a).Select(this, a); }
+        public Vector2D Max(Vector2D a) { return (this < a).Select(this, a); }
+        public float Min() { return x < y ? x : y; }
+        public float Max() { return x < y ? x : y; }
+        public Vector2D Clamp(Vector2D aMin, Vector2D aMax) { return new Vector2D(Op.Clamp(x, aMin.x, aMax.x), Op.Clamp(y, aMin.y, aMax.y)); }
+        public Vector2D Clamp01() { return new Vector2D(Op.Clamp01(x), Op.Clamp01(y)); }
+
         #endregion
 
         #region Angle

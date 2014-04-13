@@ -5,7 +5,7 @@ namespace Nie.Math
     /// <summary>
     /// Statically normalized 2D vector. Always have a length of 1.
     /// </summary>
-    public struct Vector2DN : IVector2D<float>
+    public struct Vector2DN : IConstVector2D<float>
     {
         #region Conversion
         public static implicit operator Vector2D(Vector2DN a)
@@ -21,13 +21,18 @@ namespace Nie.Math
         }
         #endregion
 
-        #region IVector2D
-        public float x { get { return mBase.x; } set { mBase.x = value; } }
-        public float y { get { return mBase.y; } set { mBase.y = value; } }
+        #region IConstVector2D
+        public float x { get { return mBase.x; } }
+        public float y { get { return mBase.y; } }
         #endregion
 
         #region Constructor
         public Vector2DN(float x, float y) { mBase = new Vector2D(x, y); Debug.Assert(mBase.IsNormal()); }
+        public Vector2DN(Vector2D a)
+        {
+            mBase = a;
+            Debug.Assert(mBase.IsNormal());
+        }
         #endregion
 
         #region Object
@@ -38,8 +43,8 @@ namespace Nie.Math
 
 
         public Vector2DN normalized { get { return this; } }
-        public float length { get { return 1; } }
-        public float sqrLength { get { return 1; } }
+        public float length { get { return Scalar.one; } }
+        public float sqrLength { get { return Scalar.one; } }
         public bool IsNormal() { return true; }
 
 
@@ -50,24 +55,30 @@ namespace Nie.Math
 
 
         #region Operator
-        public static Bool2 operator <(Vector2DN a, Vector2DN b) { return new Bool2(a.x < b.x, a.y < b.y); }
-        public static Bool2 operator >(Vector2DN a, Vector2DN b) { return new Bool2(a.x > b.x, a.y > b.y); }
-        public static Bool2 operator <=(Vector2DN a, Vector2DN b) { return new Bool2(a.x <= b.x, a.y <= b.y); }
-        public static Bool2 operator >=(Vector2DN a, Vector2DN b) { return new Bool2(a.x >= b.x, a.y >= b.y); }
-        public static Bool2 operator !=(Vector2DN a, Vector2DN b) { return new Bool2(a.x != b.x, a.y != b.y); }
-        public static Bool2 operator ==(Vector2DN a, Vector2DN b) { return new Bool2(a.x == b.x, a.y == b.y); }
+        public static Bool2 operator <(Vector2DN a, Vector2DN b) { return a.mBase < b.mBase; }
+        public static Bool2 operator >(Vector2DN a, Vector2DN b) { return a.mBase > b.mBase; }
+        public static Bool2 operator <=(Vector2DN a, Vector2DN b) { return a.mBase <= b.mBase; }
+        public static Bool2 operator >=(Vector2DN a, Vector2DN b) { return a.mBase >= b.mBase; }
+        public static Bool2 operator !=(Vector2DN a, Vector2DN b) { return a.mBase != b.mBase; }
+        public static Bool2 operator ==(Vector2DN a, Vector2DN b) { return a.mBase == b.mBase; }
 
-        public static Vector2D operator +(Vector2DN a, Vector2DN b) { return new Vector2D(a.x + b.x, a.y + b.y); }
-        public static Vector2D operator -(Vector2DN a, Vector2DN b) { return new Vector2D(a.x - b.x, a.y - b.y); }
-        public static Vector2D operator *(Vector2DN a, Vector2DN b) { return new Vector2D(a.x * b.x, a.y * b.y); }
-        public static Vector2D operator /(Vector2DN a, Vector2DN b) { return new Vector2D(a.x / b.x, a.y / b.y); }
-        public static Vector2D operator *(Vector2DN a, float b) { return new Vector2D(a.x * b, a.y * b); }
-        public static Vector2D operator /(Vector2DN a, float b) { return new Vector2D(a.x / b, a.y / b); }
-        public static Vector2D operator *(float a, Vector2DN b) { return new Vector2D(a * b.x, a * b.y); }
-        public static Vector2D operator /(float a, Vector2DN b) { return new Vector2D(a / b.x, a / b.y); }
+        public static Vector2D operator +(Vector2DN a, Vector2DN b) { return a.mBase + b.mBase; }
+        public static Vector2D operator -(Vector2DN a, Vector2DN b) { return a.mBase - b.mBase; }
+        public static Vector2D operator *(Vector2DN a, Vector2DN b) { return a.mBase * b.mBase; }
+        public static Vector2D operator /(Vector2DN a, Vector2DN b) { return a.mBase / b.mBase; }
+        public static Vector2D operator *(Vector2DN a, float b) { return a.mBase * b; }
+        public static Vector2D operator /(Vector2DN a, float b) { return a.mBase / b; }
+        public static Vector2D operator *(float a, Vector2DN b) { return a * b.mBase; }
+        public static Vector2D operator /(float a, Vector2DN b) { return a / b.mBase; }
 
-        public static Vector2DN operator -(Vector2DN a) { return new Vector2DN(-a.x, -a.y); }
+        public static Vector2DN operator -(Vector2DN a) { return new Vector2DN(-a.mBase); }
+
+        public Vector2D Min(Vector2DN a) { return mBase.Min(a.mBase); }
+        public Vector2D Max(Vector2DN a) { return mBase.Max(a.mBase); }
+        public float Min() { return mBase.Min(); }
+        public float Max() { return mBase.Max(); }
         #endregion
+
 
         #region Angle
         public Vector2DN perpendicularCW { get { return new Vector2DN(y, -x); } }

@@ -1,7 +1,7 @@
 namespace Nie.Math{
 
 
-    public struct Bool2 : IVector2D<bool>
+    public struct Bool2 : IVector2D<bool>, IConstVector2D<bool>
     {
 
         #region Constructor
@@ -29,6 +29,18 @@ namespace Nie.Math{
 
         public Vector2D Select(Vector2D aTrue, Vector2D aFalse) {
             return new Vector2D(mX ? aTrue.x : aFalse.x, mY ? aTrue.y : aFalse.y);
+        }
+        public T Select<T, UT>(T aTrue, IConstVector2D<UT> aFalse) where T : IVector2D<UT>, new()
+        {
+            T r = new T();
+            r.x = mX ? aTrue.x : aFalse.x;
+            r.y = mY ? aTrue.y : aFalse.y;
+            return r;
+        }
+        public void Select<T>(ref IVector2D<T> aOut, IConstVector2D<T> aTrue, IConstVector2D<T> aFalse)
+        {
+            aOut.x = mX ? aTrue.x : aFalse.x;
+            aOut.y = mY ? aTrue.y : aFalse.y;
         }
 
         #region Object

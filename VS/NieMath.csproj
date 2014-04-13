@@ -50,19 +50,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Nie\Math\AngleCos.cs" />
+    <Compile Include="Nie\Math\AngleDegree.cs" />
     <Compile Include="Nie\Math\AngleRadian.cs" />
     <Compile Include="Nie\Math\Bool2.cs" />
     <Compile Include="Nie\Math\Bool3.cs" />
+    <Compile Include="Nie\Math\Bool4.cs" />
     <Compile Include="Nie\Math\CircularDirection.cs" />
     <Compile Include="Nie\Math\Debug.cs" />
     <Compile Include="Nie\Math\IVector2D.cs" />
     <Compile Include="Nie\Math\IVector3D.cs" />
+    <Compile Include="Nie\Math\IVector4D.cs" />
     <Compile Include="Nie\Math\Op.cs" />
     <Compile Include="Nie\Math\Scalar.cs" />
     <Compile Include="Nie\Math\Vector2D.cs" />
     <Compile Include="Nie\Math\Vector2DN.cs" />
     <Compile Include="Nie\Math\Vector3D.cs" />
     <Compile Include="Nie\Math\Vector3DN.cs" />
+    <Compile Include="Nie\Math\Vector4D.cs" />
+    <Compile Include="Nie\Math\Vector4DN.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

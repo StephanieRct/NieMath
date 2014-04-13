@@ -4,7 +4,7 @@
 
 namespace Nie.Math
 {
-    public struct Vector3D : IVector3D<float>
+    public struct Vector3D : IVector3D<float>, IConstVector3D<float>
     {
 #if NIEMATH_UNITY
         private UnityEngine.Vector3 mBase;
@@ -48,7 +48,7 @@ namespace Nie.Math
 
         public Vector3DN normalized { get { return new Vector3DN(this / length); } }
         public float length { get { return Op.Sqrt(sqrLength); } set { float r = value / Op.Sqrt(sqrLength); this *= r; } }
-        public float sqrLength { get { return mX * mX + mY * mY + mZ * mZ; } }
+        public float sqrLength { get { return Dot(this); } }
 #endif
         
         #region Constructor
@@ -140,6 +140,13 @@ namespace Nie.Math
         public static Vector3D operator /(float a, Vector3D b) { return new Vector3D(a / b.x, a / b.y, a / b.z); }
 
         public static Vector3D operator -(Vector3D a) { return new Vector3D(-a.x, -a.y, -a.z); }
+
+        public Vector3D Min(Vector3D a) { return (this < a).Select(this, a); }
+        public Vector3D Max(Vector3D a) { return (this < a).Select(this, a); }
+        public float Min() { return x < y ? (x<z?x:z) : (y<z?y:z); }
+        public float Max() { return x < y ? (x < z ? x : z) : (y < z ? y : z); }
+        public Vector3D Clamp(Vector3D aMin, Vector3D aMax) { return new Vector3D(Op.Clamp(x, aMin.x, aMax.x), Op.Clamp(y, aMin.y, aMax.y), Op.Clamp(z, aMin.z, aMax.z)); }
+        public Vector3D Clamp01() { return new Vector3D(Op.Clamp01(x), Op.Clamp01(y), Op.Clamp01(z)); }
         #endregion
 
 

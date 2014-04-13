@@ -12,7 +12,10 @@ namespace Nie.Math
         public static float Cos (float a) { return (float)System.Math.Cos (a); }
         public static float Sin (float a) { return (float)System.Math.Sin (a); }
 
-
+        public static float Min(float a, float b) { return a < b ? a : b; }
+        public static float Max(float a, float b) { return a < b ? a : b; }
+        public static float Clamp(float v, float aMin, float aMax) { return v < aMin ? aMin : v > aMax ? aMax : v; }
+        public static float Clamp01(float v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
         
         public static bool IsZeroNear(float a){
             return IsNear(a, Scalar.zero);

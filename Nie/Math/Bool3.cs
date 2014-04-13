@@ -2,7 +2,7 @@ namespace Nie.Math
 {
 
 
-    public struct Bool3 : IVector3D<bool>
+    public struct Bool3 : IVector3D<bool>, IConstVector3D<bool>
     {
 
         #region Constructor
@@ -31,6 +31,20 @@ namespace Nie.Math
         public Vector3D Select(Vector3D aTrue, Vector3D aFalse)
         {
             return new Vector3D(mX ? aTrue.x : aFalse.x, mY ? aTrue.y : aFalse.y, mZ ? aTrue.z : aFalse.z);
+        }
+        public T Select<T, UT>(T aTrue, IConstVector3D<UT> aFalse) where T : IVector3D<UT>, new()
+        {
+            T r = new T();
+            r.x = mX ? aTrue.x : aFalse.x;
+            r.y = mY ? aTrue.y : aFalse.y;
+            r.z = mZ ? aTrue.z : aFalse.z;
+            return r;
+        }
+        public void Select<T>(ref IVector3D<T> aOut, IConstVector3D<T> aTrue, IConstVector3D<T> aFalse)
+        {
+            aOut.x = mX ? aTrue.x : aFalse.x;
+            aOut.y = mY ? aTrue.y : aFalse.y;
+            aOut.z = mZ ? aTrue.z : aFalse.z;
         }
 
         #region Object

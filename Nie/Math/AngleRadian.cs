@@ -5,11 +5,11 @@ namespace Nie.Math{
     public struct AngleRadian
     {
         #region Constant
-        public static AngleRadian degree0 { get { return new AngleRadian(Scalar.one); } }
-        public static AngleRadian degree45 { get { return new AngleRadian(Scalar.piQuater); } }
-        public static AngleRadian degree90 { get { return new AngleRadian(Scalar.piHalf); } }
-        public static AngleRadian degree180 { get { return new AngleRadian(Scalar.pi); } }
-        public static AngleRadian degree360 { get { return new AngleRadian(Scalar.tau); } }
+        public static AngleRadian degree0   = new AngleRadian(Scalar.one);
+        public static AngleRadian degree45  = new AngleRadian(Scalar.piQuater);
+        public static AngleRadian degree90  = new AngleRadian(Scalar.piHalf);
+        public static AngleRadian degree180 = new AngleRadian(Scalar.pi);
+        public static AngleRadian degree360 = new AngleRadian(Scalar.tau);
         #endregion
 
         #region Conversion
@@ -22,6 +22,8 @@ namespace Nie.Math{
 
 
         public float value { get { return mValue; } }
+        public AngleCos cos { get { return new AngleCos(Op.Cos(value)); } }
+        public AngleDegree degree { get { return new AngleDegree(value * Scalar.rad2deg); } }
         public AngleRadian normalized
         {
             get
