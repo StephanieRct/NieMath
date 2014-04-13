@@ -2,11 +2,14 @@ namespace Nie.Math
 {
     public struct Scalar
     {
-
         public static float piQuater = 0.78539816339744830961566084581988f;
         public static float piHalf = 1.5707963267948966192313216916398f;
         public static float piThreeQuater = 2.3561944901923449288469825374596f;
         public static float pi = 3.1415926535897932384626433832795f;
+        public static float tau = 6.283185307179586476925286766559f;
+        public static float tauQuater = 1.5707963267948966192313216916398f;
+        public static float tauHalf = 3.1415926535897932384626433832795f;
+        public static float tauThreeQuater = 4.7123889803846898576939650751f;
         public static float tau = 6.283185307179586476925286766559f;
         public static float cos45 = 0.70710678118654752440084436210485f;
         public static float cos30 = 0.86602540378443864676372317075294f;

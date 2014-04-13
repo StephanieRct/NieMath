@@ -6,6 +6,9 @@ Unity/Obj/
 Unity/UnityGenerated/
 Unity/Library/
 Unity/Assets/Nie/
+Unity/*.unityproj
+Unity/*.userprefs
+
 # ============= #
 # Visual Studio #
 # ============= #
