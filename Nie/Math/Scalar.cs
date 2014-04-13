@@ -10,7 +10,6 @@ namespace Nie.Math
         public static float tauQuater = 1.5707963267948966192313216916398f;
         public static float tauHalf = 3.1415926535897932384626433832795f;
         public static float tauThreeQuater = 4.7123889803846898576939650751f;
-        public static float tau = 6.283185307179586476925286766559f;
         public static float cos45 = 0.70710678118654752440084436210485f;
         public static float cos30 = 0.86602540378443864676372317075294f;
         public static float rad2deg = 57.295779513082320876798154814105f;
