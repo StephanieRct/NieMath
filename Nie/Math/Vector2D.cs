@@ -87,9 +87,9 @@ namespace Nie.Math
         public static Vector2D operator -(Vector2D a) { return new Vector2D(-a.x, -a.y); }
 
         public Vector2D Min(Vector2D a){ return (this < a).Select(this, a); }
-        public Vector2D Max(Vector2D a) { return (this < a).Select(this, a); }
+        public Vector2D Max(Vector2D a) { return (this > a).Select(this, a); }
         public float Min() { return x < y ? x : y; }
-        public float Max() { return x < y ? x : y; }
+        public float Max() { return x > y ? x : y; }
         public Vector2D Clamp(Vector2D aMin, Vector2D aMax) { return new Vector2D(Op.Clamp(x, aMin.x, aMax.x), Op.Clamp(y, aMin.y, aMax.y)); }
         public Vector2D Clamp01() { return new Vector2D(Op.Clamp01(x), Op.Clamp01(y)); }
 
