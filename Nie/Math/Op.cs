@@ -6,7 +6,8 @@ namespace Nie.Math
         public static float Abs(float a) { return System.Math.Abs(a); }
         public static int Sign(float a) { return System.Math.Sign(a); }
         public static float Sqrt(float a) { return (float)System.Math.Sqrt(a); }
-        
+        public static float Square(float a) { return a*a; }
+
         public static float ACos(float a) { return (float)System.Math.Acos(a); }
         public static float ASin(float a) { return (float)System.Math.Asin(a); }
         public static float Cos (float a) { return (float)System.Math.Cos (a); }

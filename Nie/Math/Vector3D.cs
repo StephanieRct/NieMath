@@ -154,8 +154,10 @@ namespace Nie.Math
         public bool IsWithin90DegreeOf(Vector3D a) { return Dot(a) >= 0; }
         public bool IsPerpendicular(Vector3D a) { return Dot(a) == 0; }
         public bool IsPerpendicularNear(Vector3D a) { return Op.IsZeroNear(Dot(a)); }
-        public bool IsParallel(Vector3D aTo) { return Op.Abs(Dot(aTo)) == 1; }
-        public bool IsParallelNear(Vector3D aTo) { return Op.IsZeroNear(Op.Abs(Dot(aTo)-1)); }
+        public bool IsParallel(Vector3D aTo) { return Op.Square(Dot(aTo)) == sqrLength * aTo.sqrLength; }
+        public bool IsParallelNear(Vector3D aTo) { return Op.IsZeroNear(Op.Square(Dot(aTo)) - sqrLength * aTo.sqrLength); }
+        public bool IsParallel(Vector3DN aTo) { return aTo.IsParallel(this); }
+        public bool IsParallelNear(Vector3DN aTo) { return aTo.IsParallel(this); }
         public AngleCos AngleBetween(Vector3D a)
         {
             return new AngleCos(normalized.Dot(a.normalized));
