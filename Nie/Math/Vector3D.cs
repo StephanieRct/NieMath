@@ -155,7 +155,7 @@ namespace Nie.Math
         public bool IsPerpendicular(Vector3D a) { return Dot(a) == 0; }
         public bool IsPerpendicularNear(Vector3D a) { return Op.IsZeroNear(Dot(a)); }
         public bool IsParallel(Vector3DN aTo) { return Op.Abs(normalized.Dot(aTo)) == 1; }
-        public bool IsParallelNear(Vector3DN aTo) { return Op.IsZeroNear(normalized.Op.Abs(Dot(aTo)-1)); }
+        public bool IsParallelNear(Vector3DN aTo) { return Op.IsZeroNear(Op.Abs(normalized.Dot(aTo) - 1)); }
         public AngleCos AngleBetween(Vector3D a)
         {
             return new AngleCos(normalized.Dot(a.normalized));
