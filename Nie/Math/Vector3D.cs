@@ -142,9 +142,9 @@ namespace Nie.Math
         public static Vector3D operator -(Vector3D a) { return new Vector3D(-a.x, -a.y, -a.z); }
 
         public Vector3D Min(Vector3D a) { return (this < a).Select(this, a); }
-        public Vector3D Max(Vector3D a) { return (this < a).Select(this, a); }
+        public Vector3D Max(Vector3D a) { return (this > a).Select(this, a); }
         public float Min() { return x < y ? (x<z?x:z) : (y<z?y:z); }
-        public float Max() { return x < y ? (x < z ? x : z) : (y < z ? y : z); }
+        public float Max() { return x > y ? (x > z ? x : z) : (y > z ? y : z); }
         public Vector3D Clamp(Vector3D aMin, Vector3D aMax) { return new Vector3D(Op.Clamp(x, aMin.x, aMax.x), Op.Clamp(y, aMin.y, aMax.y), Op.Clamp(z, aMin.z, aMax.z)); }
         public Vector3D Clamp01() { return new Vector3D(Op.Clamp01(x), Op.Clamp01(y), Op.Clamp01(z)); }
         #endregion

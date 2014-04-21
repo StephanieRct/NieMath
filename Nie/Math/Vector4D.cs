@@ -154,7 +154,7 @@ namespace Nie.Math
         public static Vector4D operator -(Vector4D a) { return new Vector4D(-a.x, -a.y, -a.z, -a.w); }
 
         public Vector4D Min(Vector4D a) { return (this < a).Select(this, a); }
-        public Vector4D Max(Vector4D a) { return (this < a).Select(this, a); }
+        public Vector4D Max(Vector4D a) { return (this > a).Select(this, a); }
         public float Min() { return Op.Min(xy.Min(), zw.Min()); }
         public float Max() { return Op.Max(xy.Max(), zw.Max()); }
         public Vector4D Clamp(Vector4D aMin, Vector4D aMax) { return new Vector4D(Op.Clamp(x, aMin.x, aMax.x), Op.Clamp(y, aMin.y, aMax.y), Op.Clamp(z, aMin.z, aMax.z), Op.Clamp(w, aMin.w, aMax.w)); }
